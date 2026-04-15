@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             DirectortesiSeeder::class,
             AlumnoSeeder::class,
             ProgramaSeeder::class,
+            LineaSeeder::class,
         ]);
     }
 }
