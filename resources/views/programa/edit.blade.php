@@ -6,7 +6,7 @@
             <div class="col-6">
                 <div class="card">
                     <div class="card-header">
-                        Editar Programa
+                         <span class="fs-3">Modificar Programa Educativo</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{route('programas.update',['programa'=>$programa->id])}}">

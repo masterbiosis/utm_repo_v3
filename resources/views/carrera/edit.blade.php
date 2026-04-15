@@ -6,7 +6,7 @@
             <div class="col-6">
                 <div class="card">
                     <div class="card-header">
-                        Agregar Carrera
+                        <span class="fs-3">Editar Carrera</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{route('carreras.update',['carrera'=>$carrera->id])}}">

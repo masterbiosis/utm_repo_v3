@@ -6,7 +6,7 @@
             <div class="col-6">
                 <div class="card">
                     <div class="card-header">
-                        Editar Asesor
+                        <span class="fs-3">Editar Asesor Empresarial</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{route('asesorempresas.update',['asesorempresa'=>$asesor->id])}}">

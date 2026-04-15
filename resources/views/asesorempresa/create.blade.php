@@ -6,7 +6,7 @@
             <div class="col-6">
                 <div class="card">
                     <div class="card-header">
-                        Agregar Asesor
+                        <span class="fs-3">Agregar Asesor Empresarial</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{route('asesorempresas.store')}}">

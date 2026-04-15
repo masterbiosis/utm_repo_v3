@@ -6,7 +6,7 @@
             <div class="col-6">
                 <div class="card">
                     <div class="card-header">
-                        Agregar Subdirector de Carrera
+                        <span class="fs-3">Agregar Subdirector de Carrera</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{route('subdirectors.store')}}">
@@ -38,6 +38,7 @@
                             </div>
 
                             <div class="mb-3">
+                                <label for="carrera" class="form-label">Carrera</label>
                                 <select class="form-select" name="carrera_id">
                                     <option selected>Elige una carrera</option>
                                     @foreach ($carreras as $carrera)

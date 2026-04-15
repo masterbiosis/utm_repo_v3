@@ -18,7 +18,7 @@ class Carrera extends Model
     public function director(){
         return $this->hasOne(Subdirector::class);
     }
-    
+
     //La carrera tiene muchos programas educativos
     public function programas(){
         return $this->hasMany(Programa::class);

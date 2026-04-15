@@ -7,6 +7,7 @@ use App\Http\Requests\StoreDirectortesiRequest;
 use App\Http\Requests\UpdateDirectortesiRequest;
 use App\Mail\MailTicMailable;
 use App\Models\Alumno;
+use Illuminate\Auth\Middleware\Authorize;
 
 class DirectortesiController extends Controller
 {
@@ -22,6 +23,7 @@ class DirectortesiController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Directortesi::class);
         $directortesis = Directortesi::all();
         return view('directortesi.index', [
             'directortesis' => $directortesis
@@ -33,6 +35,7 @@ class DirectortesiController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Directortesi::class);
         return view('directortesi.create');
     }
 

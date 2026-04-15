@@ -13,16 +13,18 @@ class AlumnoController extends Controller
         //$this->middleware('auth')->only('index'); //Solamente autentifica este metodo
         //$this->middleware('auth')->only(['index','create']); Solamente los que esten en el arreglo
         //$this->middleware('auth')->except('index'); Igual que el anterior solo que estos son excluidos, es decir, no necesitaran hacer loqin
-        $this->middleware('auth');//Exige la autenticacion para cualquiera de los metodos.
+        $this->middleware('auth'); //Exige la autenticacion para cualquiera de los metodos.
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $alumnos=Alumno::all();
-        return view('alumno.index',[
-        'alumnos'=>$alumnos]);
+        $this->authorize('viewAny', Alumno::class);
+        $alumnos = Alumno::all();
+        return view('alumno.index', [
+            'alumnos' => $alumnos
+        ]);
     }
 
     /**
@@ -30,6 +32,7 @@ class AlumnoController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Alumno::class);
         return view('alumno.create');
     }
 
@@ -38,8 +41,8 @@ class AlumnoController extends Controller
      */
     public function store(StoreAlumnoRequest $request)
     {
-        $alumno=Alumno::create(request()->all());
-        session()->flash('success',"El Alumno fue dado de alta exitosamente.");
+        $alumno = Alumno::create(request()->all());
+        session()->flash('success', "El Alumno fue dado de alta exitosamente.");
         return redirect()->route('alumnos.index');
     }
 
@@ -56,8 +59,8 @@ class AlumnoController extends Controller
      */
     public function edit(Alumno $alumno)
     {
-        return view('alumno.edit',[
-            'alumno'=>$alumno
+        return view('alumno.edit', [
+            'alumno' => $alumno
         ]);
     }
 
@@ -66,8 +69,8 @@ class AlumnoController extends Controller
      */
     public function update(UpdateAlumnoRequest $request, Alumno $alumno)
     {
-         $alumno->update(request()->all());
-            session()->flash('success',"El alumno fue modificado exitosamente.");
+        $alumno->update(request()->all());
+        session()->flash('success', "El alumno fue modificado exitosamente.");
         return redirect()->route('alumnos.index');
     }
 
@@ -77,7 +80,7 @@ class AlumnoController extends Controller
     public function destroy(Alumno $alumno)
     {
         $alumno->delete();
-        session()->flash('success',"El Alumno {$alumno->nombre}, fue borrado exitosamente.");
+        session()->flash('success', "El Alumno {$alumno->nombre}, fue borrado exitosamente.");
         return redirect()->route('alumnos.index');
     }
 }

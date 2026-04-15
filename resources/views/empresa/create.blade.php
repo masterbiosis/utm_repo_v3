@@ -7,10 +7,10 @@
 
          <div class="card">
   <div class="card-header">
-    Crear Linea
+    <span class="fs-3">Crear Empresa</span>
   </div>
   <div class="card-body">
-    
+
       <form method="POST" action="{{route('empresas.store')}}">
         @csrf
            <div class="mb-3">

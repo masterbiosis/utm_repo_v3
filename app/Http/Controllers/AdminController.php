@@ -17,36 +17,38 @@ class AdminController extends Controller
         //$this->middleware('auth')->only('index'); //Solamente autentifica este metodo
         //$this->middleware('auth')->only(['index','create']); Solamente los que esten en el arreglo
         //$this->middleware('auth')->except('index'); Igual que el anterior solo que estos son excluidos, es decir, no necesitaran hacer loqin
-        $this->middleware('auth');//Exige la autenticacion para cualquiera de los metodos.
+        $this->middleware('auth'); //Exige la autenticacion para cualquiera de los metodos.
     }
 
-    public function asignar(){
+    public function asignar()
+    {
+        $this->authorize('viewAny', Admin::class);
         $directortesis = Directortesi::all();
         $alumnos = Alumno::all();
         $directorId = 0;
 
-        return view('admin.asignar',[
-            'directortesis'=>$directortesis,
-            'alumnos'=>$alumnos,
-            'directorId'=>$directorId
+        return view('admin.asignar', [
+            'directortesis' => $directortesis,
+            'alumnos' => $alumnos,
+            'directorId' => $directorId
         ]);
-
     }
 
 
-    public function asignardata(Request $request){
+    public function asignardata(Request $request)
+    {
         var_dump($request->directortesi);
         var_dump($request->estudiante);
         //var_dump($request->alumno);
         //$affectedRows = Post::where("id", 3)->update(["title" => "Updated title"]);
         //Alumno::where('id',$request->estudiante)->update(["directortesi_id"=>$request->directortesi]);
-        if(count($request->estudiante) > 0){
-            foreach($request->estudiante as $estudiante){
-              // var_dump($alumno);
-               //$alumno->nombre;
+        if (count($request->estudiante) > 0) {
+            foreach ($request->estudiante as $estudiante) {
+                // var_dump($alumno);
+                //$alumno->nombre;
 
-               echo $estudiante;
-               Alumno::where('id',$estudiante)->update(["directortesi_id"=>$request->directortesi]);
+                echo $estudiante;
+                Alumno::where('id', $estudiante)->update(["directortesi_id" => $request->directortesi]);
             }
         }
         return redirect()->route('admin.asignar');

@@ -8,7 +8,7 @@
 
          <div class="card">
   <div class="card-header">
-    Agregar Director de Carrera
+    <span class="fs-3">Agregar Alumno</span>
   </div>
   <div class="card-body">
 

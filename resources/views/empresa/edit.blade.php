@@ -6,11 +6,11 @@
         <div class="col-8">
 
          <div class="card">
-  <div class="card-header">
-    Crear Linea
+  <div class="card-header"><span class="fs-3">Modificar Empresa</span>
+
   </div>
   <div class="card-body">
-    
+
       <form method="POST" action="{{route('empresas.update',['empresa'=>$empresa->id])}}">
         @method('PUT')
         @csrf

@@ -7,7 +7,7 @@
         <div class="col-9">
             <div class="card">
                 <div class="card-header">
-                    Crear Documento
+                    <span class="fs-3">Crear Tesis/Tesina</span>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('documentos.store') }}" enctype="multipart/form-data">
@@ -73,11 +73,11 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="director_tesi_id" class="form-label">Director de documento</label>
+                            <label for="director_tesi_id" class="form-label">Director de Tesis/Tesina</label>
                             <select class="form-select" name="director_tesi_id" required>
-                                <option selected disabled>Selecciona un director de documento</option>
+                                <option selected disabled>Selecciona un director de tesis/tesina</option>
                                 @foreach ($directortesis as $directortesi)
-                                    <option value="{{ $directortesi->id }}">{{ $directortesi->nombre }} {{ $directortesi->apellido }}</option>
+                                    <option value="{{ $directortesi->id }}">{{ $directortesi->nombre }} {{ $directortesi->apellidop }} {{ $directortesi->apellidom }}</option>
                                 @endforeach
                             </select>
                             @error('director_tesi_id')

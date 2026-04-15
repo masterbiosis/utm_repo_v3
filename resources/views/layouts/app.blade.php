@@ -38,61 +38,66 @@
                         <!-- Left Side Of Navbar -->
                         {{-- Inicia menu Izquierdo --}}
                         <ul class="navbar-nav me-auto">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link {{ (request()->is('alumnos') or request()->is('asignar')) ? 'active' : '' }} dropdown-toggle"
-                                    href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Alumnos
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{ route('alumnos.index') }}">Alumnos</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('admin.asignar') }}">Asignar Director de
-                                            Tesis</a></li>
-                                </ul>
-                            </li>
+                            @can('viewAny', App\Models\Admin::class)
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link {{ (request()->is('alumnos') or request()->is('asignar')) ? 'active' : '' }} dropdown-toggle"
+                                        href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Alumnos
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{{ route('alumnos.index') }}">Alumnos</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('admin.asignar') }}">Asignar Director de
+                                                Tesis</a></li>
+                                    </ul>
+                                </li>
 
 
-                            <li class="nav-item dropdown">
-                                <a class="nav-link {{ (request()->is('empresa') or request()->is('asesorempresas')) ? 'active' : '' }} dropdown-toggle"
-                                    href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Empresa
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item">
-                                        <a class="nav-link {{ request()->is('empresas') ? 'active' : '' }}"
-                                            href="{{ route('empresas.index') }}">Empresas</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link {{ request()->is('asesorempresas') ? 'active' : '' }}"
-                                            href="{{ route('asesorempresas.index') }}">Asesor Empresarial</a>
-                                    </li>
-                                </ul>
-                            </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link {{ request()->is('carreras') ? 'active' : '' }}"
-                                    href="{{ route('carreras.index') }}">Carreras</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{ request()->is('subdirectors') ? 'active' : '' }}"
-                                    href="{{ route('subdirectors.index') }}">Subdirectores</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{ request()->is('documentos') ? 'active' : '' }}"
-                                    href="{{ route('documentos.index') }}">Tesis/Tesinas</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{ request()->is('lineas') ? 'active' : '' }}"
-                                    href="{{ route('lineas.index') }}">Líneas de Investigación</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{ (request()->is('directortesis') or request()->is('asignados')) ? 'active' : '' }}"
-                                    href="{{ route('directortesis.index') }}">Director de Tesis</a>
-                            </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link {{ (request()->is('empresa') or request()->is('asesorempresas')) ? 'active' : '' }} dropdown-toggle"
+                                        href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Empresa
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link {{ request()->is('empresas') ? 'active' : '' }}"
+                                                href="{{ route('empresas.index') }}">Empresas</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link {{ request()->is('asesorempresas') ? 'active' : '' }}"
+                                                href="{{ route('asesorempresas.index') }}">Asesor Empresarial</a>
+                                        </li>
+                                    </ul>
+                                </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link {{ request()->is('programas') ? 'active' : '' }}"
-                                    href="{{ route('programas.index') }}">Programa Educativo</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request()->is('carreras') ? 'active' : '' }}"
+                                        href="{{ route('carreras.index') }}">Carreras</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request()->is('subdirectors') ? 'active' : '' }}"
+                                        href="{{ route('subdirectors.index') }}">Subdirectores</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request()->is('lineas') ? 'active' : '' }}"
+                                        href="{{ route('lineas.index') }}">Líneas de Investigación</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ (request()->is('directortesis') or request()->is('asignados')) ? 'active' : '' }}"
+                                        href="{{ route('directortesis.index') }}">Director de Tesis</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request()->is('programas') ? 'active' : '' }}"
+                                        href="{{ route('programas.index') }}">Programa Educativo</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request()->is('documentos') ? 'active' : '' }}"
+                                        href="{{ route('documentos.index') }}">Tesis/Tesinas</a>
+                                </li>
+                            @endcan
+
                         </ul>
 
 

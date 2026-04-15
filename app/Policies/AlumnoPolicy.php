@@ -13,7 +13,7 @@ class AlumnoPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->rol==1;
+        return $user->rol == 1;
     }
 
     /**
@@ -29,7 +29,7 @@ class AlumnoPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->rol == 1;
     }
 
     /**

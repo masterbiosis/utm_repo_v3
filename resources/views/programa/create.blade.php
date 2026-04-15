@@ -6,7 +6,7 @@
             <div class="col-6">
                 <div class="card">
                     <div class="card-header">
-                        Agregar Programa
+                        <span class="fs-3">Agregar Programa Educativo</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{route('programas.store')}}">
@@ -17,6 +17,7 @@
                             </div>
 
                             <div class="mb-3">
+                                <label for="carrera" class="form-label">Carrera</label>
                                 <select class="form-select" name="carrera_id">
                                     <option selected>Elige una carrera</option>
                                     @foreach ($carreras as $carrera)
