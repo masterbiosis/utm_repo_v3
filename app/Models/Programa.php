@@ -20,5 +20,10 @@ class Programa extends Model
         return $this->belongsTo(Carrera::class);
     }
 
+    public function linea(){
+        //Un programa tiene muchas lineas
+        return $this->hasMany(Linea::class);
+    }
+
 
 }

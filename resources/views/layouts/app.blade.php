@@ -51,8 +51,6 @@
                                     </ul>
                                 </li>
 
-
-
                                 <li class="nav-item dropdown">
                                     <a class="nav-link {{ (request()->is('empresa') or request()->is('asesorempresas')) ? 'active' : '' }} dropdown-toggle"
                                         href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -19,4 +19,11 @@ class Linea extends Model
     public function documentos(){
         return $this->belongsToMany(Documento::class,'documento_linea','linea_id','documento_id');
     }
+
+     public function programa(){
+        //La línea pertenece a un programa
+        return $this->belongsTo(Programa::class);
+    }
+
+
 }

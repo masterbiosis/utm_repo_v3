@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             SubdirectorSeeder::class,
             DirectortesiSeeder::class,
             AlumnoSeeder::class,
+            ProgramaSeeder::class,
         ]);
     }
 }
