@@ -40,7 +40,7 @@
 
                             </div>
 
-                            <div class="mb-3">
+                            {{-- <div class="mb-3"> --}}
                                 <label for="carrera" class="form-label">Carrera</label>
 
                                 <select class="form-select" name="carrera_id">

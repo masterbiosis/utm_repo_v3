@@ -42,7 +42,7 @@
                                     @if ($directortesi->nombre != 'No asignado')
                                         <tr>
                                             <td>{{ $directortesi->id }}</td>
-                                            <td>{{ $directortesi->nombre }}</td>
+                                            <td>{{ $directortesi->siglasEstudio.' '.$directortesi->nombre }}</td>
                                             <td>{{ $directortesi->apellidop }}</td>
                                             <td>{{ $directortesi->apellidom }}</td>
                                             <td>{{ $directortesi->email }}</td>

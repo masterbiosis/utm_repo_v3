@@ -20,6 +20,7 @@
                                         @if ($directortesi->id == 1)
                                             {{ $directortesi->nombre }}
                                         @else
+                                            {{ $directortesi->siglasEstudio}}
                                             {{ $directortesi->nombre }}
                                             {{ $directortesi->apellidop }}
                                             {{ $directortesi->apellidom }}
@@ -62,7 +63,10 @@
                                                         {{ $alumno->apellidom }}
                                                     </div>
                                                 </td>
-                                                <td>{{ $alumno->directortesi_id != 1 ? $alumno->directortesi->nombre : 'No asignado' }}
+                                                <td>
+                                                    {{
+                                                        $alumno->directortesi_id != 1 ? $alumno->directortesi->siglasEstudio.' '.$alumno->directortesi->nombre.' '.$alumno->directortesi->apellidop.' '.$alumno->directortesi->apellidom : 'No asignado'
+                                                    }}
                                                 </td>
                                             </tr>
                                         @endforeach

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('lineas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->bigInteger('programa_id')->unsigned();
             $table->string('descripcion');
+            $table->bigInteger('programa_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('programa_id')->references('id')->on('programas');

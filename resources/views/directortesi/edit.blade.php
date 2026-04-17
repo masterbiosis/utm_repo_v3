@@ -9,7 +9,7 @@
 
          <div class="card">
   <div class="card-header">
-    Agregar Director de Tesis
+    <span class="fs-3">Editar Director de Tesis/Tesina</span>
   </div>
   <div class="card-body">
 
