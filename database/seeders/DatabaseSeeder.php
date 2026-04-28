@@ -30,6 +30,9 @@ class DatabaseSeeder extends Seeder
             AlumnoSeeder::class,
             ProgramaSeeder::class,
             LineaSeeder::class,
+            EmpresaSeeder::class,
+            AsesorempresaSeeder::class
+
         ]);
     }
 }

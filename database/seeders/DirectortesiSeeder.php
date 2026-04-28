@@ -32,5 +32,15 @@ class DirectortesiSeeder extends Seeder
         $directortesi->telefono = '443 190 4795';
         $directortesi->email = 'elena.benitez@ut-morelia.edu.mx';
         $directortesi->save();
+
+        $directortesi = new Directortesi();
+        $directortesi->nombre = 'José luis';
+        $directortesi->apellidop = 'Cendejas';
+        $directortesi->apellidom = 'Valdez';
+        $directortesi->ultimoGradoEstudio = 'Doctorado';
+        $directortesi->siglasEstudio='Dr';
+        $directortesi->telefono = '4433449988';
+        $directortesi->email = 'jose.cendejas@ut-morelia.edu.mx';
+        $directortesi->save();
     }
 }

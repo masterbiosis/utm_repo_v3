@@ -21,5 +21,14 @@ class AlumnoSeeder extends Seeder
         $alumno->email = 'julio.correa.777@gmail.com';
         $alumno->telefono = '4431920548';
         $alumno->save();
+
+        $alumno = new Alumno();
+        $alumno->matricula = 'UTM221022TIM';
+        $alumno->nombre = 'Gustavo Adolfo';
+        $alumno->apellidop = 'López';
+        $alumno->apellidom = 'Saldaña';
+        $alumno->email = 'gustavo.lopez@ut-morelia.edu.mx';
+        $alumno->telefono = '4433221199';
+        $alumno->save();
     }
 }

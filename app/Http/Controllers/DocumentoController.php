@@ -68,6 +68,8 @@ class DocumentoController extends Controller
         $documento->director_tesi_id;
         $documento->linea_id;
         */
+
+        //dd($request);
         $documento = Documento::create(request()->all());
 
         // Manejar la subida del archivo PDF
@@ -79,13 +81,13 @@ class DocumentoController extends Controller
         $documento->save();
 
         $lineas = $request->input('lineas');
-if (!empty($lineas) && is_array($lineas)) {
-    foreach ($lineas as $linea_id) {
-        if (is_numeric($linea_id) && Linea::where('id', $linea_id)->exists()) {
-            $documento->lineas()->attach($linea_id);
+        if (!empty($lineas) && is_array($lineas)) {
+            foreach ($lineas as $linea_id) {
+                if (is_numeric($linea_id) && Linea::where('id', $linea_id)->exists()) {
+                    $documento->lineas()->attach($linea_id);
+                }
+            }
         }
-    }
-}
 
         session()->flash('success', 'El Documento fue dado de alta exitosamente.');
         return redirect()->route('documentos.index');

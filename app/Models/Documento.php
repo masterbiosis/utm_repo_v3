@@ -11,15 +11,14 @@ class Documento extends Model
     use HasFactory;
 
     protected $fillable = [
-        'autor',
         'titulo',
         'introduccion',
         'resumen',
         'fecha_presentacion',
         'alumno_id',
-        'asesor_id',
+        'asesorempresa_id',
         'programa_id',
-        'director_tesi_id',
+        'directortesis_id',
         'archivo_pdf'
     ];
 
