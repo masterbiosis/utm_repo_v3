@@ -60,7 +60,7 @@
                                         <td>{{ $documento->alumno->matricula }}</td>
                                         <td>{{ $documento->programa->nombre }}</td>
                                         <td>{{ $documento->asesor->nombre }} {{ $documento->asesor->app }} {{ $documento->asesor->apm }}</td>
-                                        <td>{{ $documento->directortesi->siglasEstudio}}. {{ $documento->directortesi->nombre }} {{ $documento->directortesi->apellidop}} {{ $documento->directortesi->apellidom}}</td>
+                                        <td>{{ $documento->directortesi->nombre }} {{ $documento->directortesi->apellidop}} {{ $documento->directortesi->apellidom}}</td>
                                         <td>
                                             <details>
                                                 <summary>Ver</summary>
