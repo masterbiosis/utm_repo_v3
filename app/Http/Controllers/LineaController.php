@@ -73,9 +73,17 @@ class LineaController extends Controller
      */
     public function update(UpdateLineaRequest $request, Linea $linea)
     {
-         $linea->update(request()->all());
-            session()->flash('success',"La linea fue modificada exitosamente.");
+        // var_dump($linea->programa_id);
+        // dd('Actualizando la Linea de Investigación. Programa_id: '.$linea->programa_id);
+        $linea->update(request()->all());
+        session()->flash('success',"La linea fue modificada exitosamente.");
         return redirect()->route('lineas.index');
+
+        /*
+            $subdirector->update(request()->all());
+            session()->flash('success',"El subdirector de carrera fue modificada de manera correcta.");
+            return redirect()->route('subdirectors.index');
+        */
     }
 
     /**

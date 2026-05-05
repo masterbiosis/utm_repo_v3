@@ -28,6 +28,8 @@ class DocumentoController extends Controller
     public function index()
     {
           $documentos=Documento::all();
+
+        //dd(var_dump($documentos));
         return view('documento.index',[
             'documentos'=>$documentos
         ]);
@@ -68,7 +70,10 @@ class DocumentoController extends Controller
         $documento->director_tesi_id;
         $documento->linea_id;
         */
+
+
         $documento = Documento::create(request()->all());
+
 
         // Manejar la subida del archivo PDF
         if ($request->hasFile('archivo_pdf')) {
@@ -78,14 +83,17 @@ class DocumentoController extends Controller
 
         $documento->save();
 
+
         $lineas = $request->input('lineas');
-if (!empty($lineas) && is_array($lineas)) {
-    foreach ($lineas as $linea_id) {
-        if (is_numeric($linea_id) && Linea::where('id', $linea_id)->exists()) {
-            $documento->lineas()->attach($linea_id);
+
+        if (!empty($lineas) && is_array($lineas)) {
+            foreach ($lineas as $linea_id) {
+                if (is_numeric($linea_id) && Linea::where('id', $linea_id)->exists()) {
+                    $documento->lineas()->attach($linea_id);
+                }
+            }
         }
-    }
-}
+
 
         session()->flash('success', 'El Documento fue dado de alta exitosamente.');
         return redirect()->route('documentos.index');
@@ -134,7 +142,7 @@ if (!empty($lineas) && is_array($lineas)) {
             $path = $request->file('archivo_pdf')->store('documentos', 'public');
             $documento->archivo_pdf = $path;
         }
-
+        $documento->update(request()->all());
         $documento->save();
 
         session()->flash('success', 'El Documento fue modificado exitosamente.');
@@ -151,6 +159,10 @@ if (!empty($lineas) && is_array($lineas)) {
             Storage::disk('public')->delete($documento->archivo_pdf);
         }
 
+        //Borrar las lineas de investigacion correspondientes al documento
+        foreach($documento->lineas as $linea){
+             $documento->lineas()->detach($linea->id);
+        }
         $documento->delete();
         session()->flash('success', "El documento {$documento->titulo} fue borrado exitosamente.");
         return redirect()->route('documentos.index');

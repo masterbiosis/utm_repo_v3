@@ -14,6 +14,8 @@ class Directortesi extends Model
         'nombre',
         'apellidop',
         'apellidom',
+        'ultimoGradoEstudio',
+        'siglasEstudio',
         'telefono',
         'email'
     ];

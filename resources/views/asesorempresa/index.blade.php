@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-11">
-                <h1>Asesores Empresariales</h1>
+                <span class="fs-3">Asesores Empresariales</span>
             </div>
             <div class="col-1">
                 <a class="btn btn-primary" href="{{ route('asesorempresas.create') }}">Nuevo</a>

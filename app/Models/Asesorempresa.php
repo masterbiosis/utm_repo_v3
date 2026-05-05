@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Dom\Document;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,4 +24,10 @@ class Asesorempresa extends Model
     public function empresa(){
         return $this->belongsTo(Empresa::class, 'empresa_id');
     }
+
+    //El asesor empresarial tiene muchas documentos
+    public function documentos(){
+        return $this->hasMany(Documento::class);
+    }
+
 }

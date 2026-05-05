@@ -9,6 +9,8 @@ use App\Mail\MailTicMailable;
 use App\Models\Alumno;
 use Illuminate\Auth\Middleware\Authorize;
 
+use Illuminate\Support\Facades\DB;
+
 class DirectortesiController extends Controller
 {
     public function __construct()
@@ -82,8 +84,13 @@ class DirectortesiController extends Controller
      */
     public function destroy(Directortesi $directortesi)
     {
-
+        // var_dump($directortesi->email);
+        // dd();
+        $userEmail = DB::table('users')->where('email',$directortesi->email)->delete();
         $directortesi->delete();
+        //dd($userEmail);
+
+
         session()->flash('success', "El director  {$directortesi->nombre}, fue borrado exitosamente.");
         return redirect()->route('directortesis.index');
     }

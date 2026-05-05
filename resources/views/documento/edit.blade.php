@@ -7,7 +7,7 @@
         <div class="col-sm-9">
             <div class="card">
                 <div class="card-header">
-                    Editar Documento
+                    <span class="fs-3">Editar Tesis/Tesina</span>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('documentos.update', $documento->id) }}" enctype="multipart/form-data">
@@ -24,12 +24,20 @@
 
                          <div class="mb-3">
                             <label for="introduccion" class="form-label">Introducción</label>
-                            <textarea required name="introduccion" aria-describedby="introduccion" class="form-control" id="introduccion" ></textarea>
+                            <textarea required name="introduccion" aria-describedby="introduccion" class="form-control" id="introduccion" >{{old('introduccion',$documento->introduccion)}}
+                            </textarea>
+                            @error('introduccion')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
 
                         </div>
                         <div class="mb-3">
                             <label for="resumen" class="form-label">Resumen</label>
-                            <textarea required name="resumen" aria-describedby="resumen" class="form-control" id="resumen"></textarea>
+                            <textarea required name="resumen" aria-describedby="resumen" class="form-control" id="resumen">{{old('resumen',$documento->resumen)}}
+                            </textarea>
+                            @error('resumen')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
 
                         </div>
 
@@ -77,7 +85,7 @@
                                 <option disabled>Selecciona un asesor externo</option>
                                 @foreach ($asesors as $asesor)
                                     <option value="{{ $asesor->id }}" {{ old('asesor_id', $documento->asesor_id) == $asesor->id ? 'selected' : '' }}>
-                                        {{ $asesor->nombre }} {{ $asesor->apellidop }} {{ $asesor->apellidom }}
+                                        {{ $asesor->nombre }} {{ $asesor->app }} {{ $asesor->apm }}
                                     </option>
                                 @endforeach
                             </select>
@@ -91,8 +99,8 @@
                             <select class="form-select" name="director_tesi_id" required>
                                 <option disabled>Selecciona un director de documento</option>
                                 @foreach ($directortesis as $directortesi)
-                                    <option value="{{ $directortesi->id }}" {{ old('director_tesi_id', $documento->director_tesi_id) == $directortesi->id ? 'selected' : '' }}>
-                                        {{ $directortesi->nombre }} {{ $directortesi->apellido }}
+                                    <option value="{{ $directortesi->id }}" {{ old('directortesi->id', $documento->directortesi->id) == $directortesi->id ? 'selected' : '' }}>
+                                        {{ $directortesi->nombre }} {{ $directortesi->apellidop }} {{ $directortesi->apellidom }}
                                     </option>
                                 @endforeach
                             </select>

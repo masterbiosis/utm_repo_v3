@@ -7,7 +7,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        Agregar Director de Tesis
+                        <span class="fs-3">Agregar Director de Tesis/Tesina</span>
                     </div>
                     <div class="card-body">
 
@@ -29,6 +29,21 @@
                                 <input required name="apellidom" type="text" class="form-control" id="apellidom"
                                     aria-describedby="apellidom">
                             </div>
+                            <div class="mb-3">
+                                <label for="ultimoGradoEstudio" class="form-label">Último Grado de Estudios</label>
+                                <input required name="ultimoGradoEstudio" type="text" class="form-control" id="ultimoGradoEstudio"
+                                    aria-describedby="ultimoGradoEstudio">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="siglasEstudio" class="form-label">Siglas del Nivel de Estudios</label>
+                                <input required name="siglasEstudio" type="text" class="form-control" id="siglasEstudio"
+                                    aria-describedby="siglasEstudio">
+                            </div>
+
+
+
+
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input required name="email" type="email" class="form-control" id="email"

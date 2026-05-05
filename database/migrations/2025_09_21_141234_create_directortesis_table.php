@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('apellidop');
             $table->string('apellidom');
+            $table->string('ultimoGradoEstudio');
+            $table->string('siglasEstudio');
             $table->string('telefono');
             $table->string('email');
             $table->timestamps();

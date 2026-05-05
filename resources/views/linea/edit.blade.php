@@ -27,16 +27,18 @@
           </div>
           <div class="mb-3">
             <label for="programa" class="form-label">Programa Educativo</label>
+            <select class="form-select" name="programa_id">
+                <option>Selecciona un programa</option>
+                @foreach ( $programas as $programa )
+                    @if($programa->id == $linea->programa_id)
+                        <option selected value="{{$programa->id}}">{{$programa->nombre}}</option>
+                    @else
+                        <option value="{{$programa->id}}">{{$programa->nombre}}</option>
+                    @endif
 
-                        <select class="form-select" name="progrma_id">
-                            <option selected>Selecciona un programa</option>
-                            @foreach ( $programas as $programa )
-
-                            <option value="{{$programa->id}}">{{$programa->nombre}}</option>
-                            @endforeach
-
-                        </select>
-                    </div>
+                @endforeach
+            </select>
+          </div>
         <button type="submit" class="btn btn-primary">Guardar</button>
       </form>
   </div>

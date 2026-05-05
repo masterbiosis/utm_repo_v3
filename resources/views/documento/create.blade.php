@@ -62,10 +62,10 @@
                         </div>
                         <div class="mb-3">
                             <label for="asesor_id" class="form-label">Asesor externo</label>
-                            <select class="form-select" name="asesor_id" required>
+                            <select class="form-select" name="asesorempresa_id" required>
                                 <option selected disabled>Selecciona un asesor externo</option>
                                 @foreach ($asesors as $asesor)
-                                    <option value="{{ $asesor->id }}">{{ $asesor->nombre }} {{ $asesor->apellidop }} {{ $asesor->apellidom }}</option>
+                                    <option value="{{ $asesor->id }}">{{ $asesor->nombre }} {{ $asesor->app }} {{ $asesor->apm }}</option>
                                 @endforeach
                             </select>
                             @error('asesor_id')
@@ -74,7 +74,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="director_tesi_id" class="form-label">Director de Tesis/Tesina</label>
-                            <select class="form-select" name="director_tesi_id" required>
+                            <select class="form-select" name="directortesis_id" required>
                                 <option selected disabled>Selecciona un director de tesis/tesina</option>
                                 @foreach ($directortesis as $directortesi)
                                     <option value="{{ $directortesi->id }}">{{ $directortesi->nombre }} {{ $directortesi->apellidop }} {{ $directortesi->apellidom }}</option>

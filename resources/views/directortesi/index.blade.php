@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-11">
-                <h1>Director de Tesis</h1>
+                <span class="fs-3">Director de Tesis/Tesina</span>
 
             </div>
             <div class="col-1">
@@ -42,7 +42,7 @@
                                     @if ($directortesi->nombre != 'No asignado')
                                         <tr>
                                             <td>{{ $directortesi->id }}</td>
-                                            <td>{{ $directortesi->nombre }}</td>
+                                            <td>{{ $directortesi->siglasEstudio.' '.$directortesi->nombre }}</td>
                                             <td>{{ $directortesi->apellidop }}</td>
                                             <td>{{ $directortesi->apellidom }}</td>
                                             <td>{{ $directortesi->email }}</td>
