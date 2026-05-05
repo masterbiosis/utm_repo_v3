@@ -14,7 +14,7 @@
 
         <div class="row">
             <div class="col-11">
-                <h1>Carreras</h1>
+                <span class="fs-3">Carrera</span>
             </div>
             <div class="col-1">
                 <a class="btn btn-primary" href="{{ route('carreras.create') }}">Nuevo</a>

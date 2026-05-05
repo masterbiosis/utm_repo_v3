@@ -17,7 +17,7 @@
 
         <div class="row">
             <div class="col-11">
-                <h1>Tesis/Tesinas</h1>
+                <span class="fs-3">Tesis/Tesina</span>
 
             </div>
             <div class="col-1">
@@ -48,6 +48,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+
                                 @foreach ($documentos as $documento)
                                     <tr>
                                         <td>{{ $documento->id }}</td>
@@ -55,12 +56,11 @@
                                         <td>{{ $documento->introduccion }}</td>
                                         <td>{{ $documento->resumen }}</td>
                                         <td>{{ $documento->fecha_presentacion }}</td>
-                                        <td>{{ $documento->alumno->nombre }} {{ $documento->alumno->apellidop }}</td>
+                                        <td>{{ $documento->alumno->nombre }} {{ $documento->alumno->apellidop }} {{ $documento->alumno->apellidom }}</td>
                                         <td>{{ $documento->alumno->matricula }}</td>
                                         <td>{{ $documento->programa->nombre }}</td>
-                                        <td>{{ $documento->asesor->nombre }} {{ $documento->asesor->apellidop }}</td>
-                                        <td>{{ $documento->directortesi->nombre }}
-                                            {{ $documento->directortesi->apellido }}</td>
+                                        <td>{{ $documento->asesor->nombre }} {{ $documento->asesor->app }} {{ $documento->asesor->apm }}</td>
+                                        <td>{{ $documento->directortesi->siglasEstudio}} {{ $documento->directortesi->nombre }} {{ $documento->directortesi->apellidop}} {{ $documento->directortesi->apellidom}}</td>
                                         <td>
                                             <details>
                                                 <summary>Ver</summary>

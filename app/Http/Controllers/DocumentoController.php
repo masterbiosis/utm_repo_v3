@@ -28,6 +28,8 @@ class DocumentoController extends Controller
     public function index()
     {
           $documentos=Documento::all();
+
+        //dd(var_dump($documentos));
         return view('documento.index',[
             'documentos'=>$documentos
         ]);
@@ -72,6 +74,7 @@ class DocumentoController extends Controller
         //dd($request);
         $documento = Documento::create(request()->all());
 
+
         // Manejar la subida del archivo PDF
         if ($request->hasFile('archivo_pdf')) {
             $path = $request->file('archivo_pdf')->store('documentos', 'public');
@@ -79,6 +82,7 @@ class DocumentoController extends Controller
         }
 
         $documento->save();
+
 
         $lineas = $request->input('lineas');
         if (!empty($lineas) && is_array($lineas)) {
@@ -136,7 +140,7 @@ class DocumentoController extends Controller
             $path = $request->file('archivo_pdf')->store('documentos', 'public');
             $documento->archivo_pdf = $path;
         }
-
+        $documento->update(request()->all());
         $documento->save();
 
         session()->flash('success', 'El Documento fue modificado exitosamente.');
@@ -153,6 +157,10 @@ class DocumentoController extends Controller
             Storage::disk('public')->delete($documento->archivo_pdf);
         }
 
+        //Borrar las lineas de investigacion correspondientes al documento
+        foreach($documento->lineas as $linea){
+             $documento->lineas()->detach($linea->id);
+        }
         $documento->delete();
         session()->flash('success', "El documento {$documento->titulo} fue borrado exitosamente.");
         return redirect()->route('documentos.index');

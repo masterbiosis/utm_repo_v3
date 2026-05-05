@@ -25,16 +25,18 @@ class Documento extends Model
      public function alumno(){
         return $this->belongsTo(Alumno::class);
     }
+
+    //El documento tiene un asesor empresarial
     public function asesor(){
-        return $this->belongsTo(Asesorempresa::class);
+        return $this->belongsTo(Asesorempresa::class,'asesorempresa_id');
     }
     public function programa(){
         return $this->belongsTo(Programa::class);
     }
     public function directortesi(){
-        return $this->belongsTo(DirectorTesi::class,'director_tesi_id','id');
+        return $this->belongsTo(Directortesi::class,'directortesis_id','id');
     }
     public function lineas(){
-        return $this->belongsToMany(Linea::class,'documentolinea','documento_id','linea_id');
+        return $this->belongsToMany(Linea::class,'documentolineas','documento_id','linea_id');
     }
 }
