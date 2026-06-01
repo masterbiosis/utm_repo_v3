@@ -118,16 +118,16 @@
                                                         <h5 class="card-title">Reusmen</h5>
                                                         <p class="text-muted">{{$documento->resumen}}</p>
 
-                                                        <h5 class="card-title">Introduccion</h5>
+                                                        <h5 class="card-title">Introducción</h5>
                                                         <p class="text-muted">{{$documento->introduccion}}</p>
 
-                                                        <h5 class="card-title">Fecha de Presentacion</h5>
+                                                        <h5 class="card-title">Fecha de Presentación</h5>
                                                         <p class="text-muted">{{$documento->fecha_presentacion}}</p>
 
                                                         <h5 class="card-title">Programa Educativo</h5>
                                                         <p class="text-muted">{{$documento->programa->nombre}}</p>
 
-                                                        <h5 class="card-title">asesor Empresarial</h5>
+                                                        <h5 class="card-title">Asesor Empresarial</h5>
                                                         <p class="text-muted">{{ $documento->asesor->nombre }} {{ $documento->asesor->app }} {{ $documento->asesor->apm }}</p>
 
                                                         <h5 class="card-title">Director de Tesis/Tesina</h5>
