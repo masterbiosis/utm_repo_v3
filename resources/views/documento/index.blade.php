@@ -35,14 +35,15 @@
                                     <th>Título</th>
                                     <th>Introducción</th>
                                     <th>Resumen</th>
-                                    <th>Fecha de presentación</th>
-                                    <th>Alumno</th>
                                     <th>Matrícula</th>
+                                    <th>Alumno</th>
+                                    <th>Fecha de presentación</th>
                                     <th>Programa</th>
                                     <th>Asesor externo</th>
                                     <th>Director doc.</th>
                                     <th>Líneas</th>
                                     <th>PDF</th>
+                                    <th></th>
                                     <th></th>
                                     <th></th>
                                 </tr>
@@ -55,9 +56,9 @@
                                         <td>{{ $documento->titulo }}</td>
                                         <td>{{ $documento->introduccion }}</td>
                                         <td>{{ $documento->resumen }}</td>
-                                        <td>{{ $documento->fecha_presentacion }}</td>
-                                        <td>{{ $documento->alumno->nombre }} {{ $documento->alumno->apellidop }} {{ $documento->alumno->apellidom }}</td>
                                         <td>{{ $documento->alumno->matricula }}</td>
+                                        <td>{{ $documento->alumno->nombre }} {{ $documento->alumno->apellidop }} {{ $documento->alumno->apellidom }}</td>
+                                        <td>{{ $documento->fecha_presentacion }}</td>
                                         <td>{{ $documento->programa->nombre }}</td>
                                         <td>{{ $documento->asesor->nombre }} {{ $documento->asesor->app }} {{ $documento->asesor->apm }}</td>
                                         <td>{{ $documento->directortesi->siglasEstudio}}. {{ $documento->directortesi->nombre }} {{ $documento->directortesi->apellidop}} {{ $documento->directortesi->apellidom}}</td>
@@ -77,11 +78,16 @@
                                         </td>
                                         <td>
                                             @if ($documento->archivo_pdf)
-                                                <a href="{{ asset('storage/' . $documento->archivo_pdf) }}"
-                                                    target="_blank">Ver PDF</a>
+                                                <a class="btn btn-success"  href="{{ asset('storage/' . $documento->archivo_pdf) }}"
+                                                    target="_blank">PDF</a>
                                             @else
                                                 Sin PDF
                                             @endif
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{$documento->id}}">
+                                                Mostrar
+                                            </button>
                                         </td>
                                         <td>
                                             <a class="btn btn-success"
@@ -96,6 +102,57 @@
                                             </form>
                                         </td>
                                     </tr>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="{{$documento->id}}" tabindex="-1" aria-labelledby="documentoModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="documentoModalLabel">{{$documento->titulo}}</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h5 class="card-title">Alumno</h5>
+                                                        <p class="text-muted">{{$documento->alumno->matricula}} {{ $documento->alumno->nombre }} {{ $documento->alumno->apellidop }} {{ $documento->alumno->apellidom }}</p>
+
+                                                        <h5 class="card-title">Reusmen</h5>
+                                                        <p class="text-muted">{{$documento->resumen}}</p>
+
+                                                        <h5 class="card-title">Introduccion</h5>
+                                                        <p class="text-muted">{{$documento->introduccion}}</p>
+
+                                                        <h5 class="card-title">Fecha de Presentacion</h5>
+                                                        <p class="text-muted">{{$documento->fecha_presentacion}}</p>
+
+                                                        <h5 class="card-title">Programa Educativo</h5>
+                                                        <p class="text-muted">{{$documento->programa->nombre}}</p>
+
+                                                        <h5 class="card-title">asesor Empresarial</h5>
+                                                        <p class="text-muted">{{ $documento->asesor->nombre }} {{ $documento->asesor->app }} {{ $documento->asesor->apm }}</p>
+
+                                                        <h5 class="card-title">Director de Tesis/Tesina</h5>
+                                                        <p class="text-muted">{{ $documento->directortesi->siglasEstudio}}. {{ $documento->directortesi->nombre }} {{ $documento->directortesi->apellidop}} {{ $documento->directortesi->apellidom}}</p>
+
+                                                        <h5 class="card-title">Lineas de Investigacion</h5>
+                                                        <p class="text-muted">
+                                                            <ul class="list-group">
+                                                                @if ($documento->lineas->isNotEmpty())
+                                                                    @foreach ($documento->lineas as $linea)
+                                                                        <li class="list-group-item">{{ $linea->nombre }}</li>
+                                                                    @endforeach
+                                                                @else
+                                                                    <li class="list-group-item">Sin líneas</li>
+                                                                @endif
+                                                            </ul>
+                                                        </p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <script type="module">
                                         $("#frm-borrar-{{ $documento->id }}").submit(function(e) {
                                             e.preventDefault();
@@ -137,7 +194,9 @@
     <script src="https://cdn.datatables.net/responsive/3.0.6/js/responsive.bootstrap5.js"></script>
 
     <script>
-        new DataTable('#documentotbl', {
+        let data = new DataTable('#documentotbl',
+        {
+
             responsive: true,
             language: {
                 "decimal": "",
@@ -160,5 +219,11 @@
                 }
             },
         });
+        data.column(2).visible(false)
+        data.column(3).visible(false)
+        data.column(7).visible(false)
+        data.column(8).visible(false)
+        data.column(9).visible(false)
+        data.column(10).visible(false)
     </script>
 @endsection
