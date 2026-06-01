@@ -41,11 +41,12 @@ class LoginController extends Controller
     protected function validateLogin(\Illuminate\Http\Request $request)
 {
     $request->validate([
-        $this->username() => 'required|string',
+        $this->username() => 'required|string|email',
         'password' => 'required|string|min:8',
     ], [
         // Mensajes personalizados para los campos vacíos
         $this->username() . '.required' => 'El campo de correo electrónico es obligatorio.',
+        $this->username().'.email'=>'El correo debe tener formato de eMail',
         'password.required' => 'Por favor, introduce tu contraseña.',
         'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
     ]);

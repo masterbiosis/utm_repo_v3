@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Override;
 
 class StoreAlumnoRequest extends FormRequest
 {
@@ -22,7 +23,20 @@ class StoreAlumnoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'matricula'=>['required','string'],
+            'nombre'=>['required','string'],
+            'apellidop'=>['required','string'],
+        ];
+    }
+
+    #[Override]
+    public function messages()
+    {
+        return [
+            'matricula.required'=>'La matricula es obligatoria',
+            'nombre.required'=>'El nombre es obligatorio',
+            'nombre.string'=>'El nombre debe ser texto',
+            'apellidop.required'=>'El apellido paterno es obligatorio',
         ];
     }
 }

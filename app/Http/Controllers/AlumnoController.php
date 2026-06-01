@@ -41,6 +41,7 @@ class AlumnoController extends Controller
      */
     public function store(StoreAlumnoRequest $request)
     {
+        $data = $request->validated();
         $alumno = Alumno::create(request()->all());
         session()->flash('success', "El Alumno fue dado de alta exitosamente.");
         return redirect()->route('alumnos.index');

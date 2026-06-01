@@ -37,7 +37,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- Left Side Of Navbar -->
                         {{-- Inicia menu Izquierdo --}}
-                        <ul class="navbar-nav me-auto">
+                        <ul class="navbar-nav me-auto fs-5">
                             @can('viewAny', App\Models\Admin::class)
                                 <li class="nav-item dropdown">
                                     <a class="nav-link {{ (request()->is('alumnos') or request()->is('asignar')) ? 'active' : '' }} dropdown-toggle"
@@ -102,7 +102,7 @@
                         {{-- Fin menu izquierdo --}}
 
                         <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav ms-auto">
+                        <ul class="navbar-nav ms-auto fs-5">
                             <!-- Authentication Links -->
                             @guest
                                 {{--
@@ -130,7 +130,8 @@
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
+                                            {{-- {{ __('Logout') }} --}}
+                                            Cerrar Sesión
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
