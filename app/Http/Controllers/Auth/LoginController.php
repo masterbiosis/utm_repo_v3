@@ -37,4 +37,17 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
     }
+
+    protected function validateLogin(\Illuminate\Http\Request $request)
+{
+    $request->validate([
+        $this->username() => 'required|string',
+        'password' => 'required|string|min:8',
+    ], [
+        // Mensajes personalizados para los campos vacíos
+        $this->username() . '.required' => 'El campo de correo electrónico es obligatorio.',
+        'password.required' => 'Por favor, introduce tu contraseña.',
+        'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
+    ]);
+}
 }

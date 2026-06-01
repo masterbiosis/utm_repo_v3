@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AlumnoController;
-use App\Http\Controllers\AlumnosController;
 use App\Http\Controllers\AsesorempresaController;
 use App\Http\Controllers\CarreraController;
 use App\Http\Controllers\DirectortesiController;
